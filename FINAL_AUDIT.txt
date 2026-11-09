@@ -1,0 +1,19 @@
+K.O.D FINAL RELEASE AUDIT
+Generated: 2026-11-04
+
+Static checks performed in the package-building environment:
+- PHP source files: 38
+- PHP syntax errors: 0 (php -l)
+- JavaScript source files: 7
+- JavaScript syntax errors: 0 (node --check)
+- SQL source/migration files included: 5
+- Corrected showroom.php includes an initialized integer favourites array and explicitly captures it in the static closure.
+- No .env credentials file is included in the package.
+
+Environment limitations:
+- This runtime does not have the PDO MySQL driver; no live MySQL schema import or transaction test could be run.
+- No production DNS, hosting account, TLS certificate or external customer browser is accessible from this build environment.
+- Browser WebGL/Three.js rendering must be verified in a real browser.
+- OpenAI API calls require the owner's API key, enabled API project and available API billing; no secret was supplied or tested.
+
+This is a static source/package audit, not a certification that the site is production-ready. Complete LAUNCH_CHECKLIST.md on the actual host before accepting public orders.

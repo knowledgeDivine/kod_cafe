@@ -1,0 +1,24 @@
+Options -Indexes
+DirectoryIndex index.php
+
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+</IfModule>
+
+# Deny hidden files (including .env, .git metadata and example env files).
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>
+
+# Keep internal documentation and deployment notes out of the public web root.
+<FilesMatch "^(README\.md|LAUNCH_CHECKLIST\.md|PRODUCTION_DEPLOYMENT\.md|FINAL_AUDIT\.txt)$">
+    Require all denied
+</FilesMatch>
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^(config|database|storage)/ - [F,L,NC]
+</IfModule>
